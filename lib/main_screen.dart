@@ -8,6 +8,12 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    ref.listen(counterProvider, (k,l){
+      if(k!>5){
+        debugPrint('Value greater than 5');
+      }
+    });
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
@@ -97,6 +103,12 @@ class HomeScreen extends ConsumerWidget {
   // Widget to display and update the state
   Widget personModelWidget(WidgetRef ref) {
     final state = ref.watch(personModelProvider);
+
+    ref.listen(counterProvider, (k,l){
+      if(k!>5){
+        debugPrint('Value greater than 5');
+      }
+    });
 
     return Container(
       margin: const EdgeInsets.all(12),
