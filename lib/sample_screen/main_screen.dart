@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app_riverpod/provider/riverpod_provider.dart';
 import 'package:todo_app_riverpod/provider/samples/notifier_multi_value.dart';
 
-class HomeScreen extends ConsumerWidget {
-  const HomeScreen({super.key});
+class SampleScreen extends ConsumerWidget {
+  const SampleScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

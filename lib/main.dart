@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app_riverpod/main_screen.dart';
+import 'package:todo_app_riverpod/screen/home.dart';
 import 'package:todo_app_riverpod/theme/theme.dart';
 
-void initHive() async{
-
-}
+void initHive() async {}
 
 void main() {
   runApp(ProviderScope(child: const MyApp()));
