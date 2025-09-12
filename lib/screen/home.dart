@@ -45,9 +45,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     todoAsync.getAllTodos();
   }
 
-  void _startEditTodo(int index) {
-
-  }
+  void _startEditTodo(int index) {}
 
   void _deleteTodo(int index) {
     // final todoAsync = ref.read(todoProvider.notifier);

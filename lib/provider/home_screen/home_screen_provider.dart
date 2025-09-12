@@ -12,7 +12,7 @@ final todoProvider = AsyncNotifierProvider<TodoNotifier, List<TodoData>>(
 class TodoNotifier extends AsyncNotifier<List<TodoData>> {
   @override
   Future<List<TodoData>> build() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(milliseconds: 1700));
     final db = ref.read(dbHelperProvider);
     return await db.getAllTodos();
   }

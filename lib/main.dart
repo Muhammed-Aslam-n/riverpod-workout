@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_app_riverpod/config/db/todo_adapter.dart';
 import 'package:todo_app_riverpod/constants/app_constants.dart';
+import 'package:todo_app_riverpod/router/route_manager.dart';
 import 'package:todo_app_riverpod/screen/home.dart';
 import 'package:todo_app_riverpod/theme/theme.dart';
 
@@ -22,10 +23,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const HomeScreen(),
+      routerConfig: RouteManager.router,
     );
   }
 }
