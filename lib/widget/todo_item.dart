@@ -25,26 +25,27 @@ class TodoListItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       elevation: 1,
       child: ListTile(
-        leading: Checkbox(
-          value: isCompleted,
-          onChanged: onChanged,
-        ),
+        leading: Checkbox(value: isCompleted, onChanged: onChanged),
         title: Text(
           title,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            decoration:
-            isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+            decoration: isCompleted
+                ? TextDecoration.lineThrough
+                : TextDecoration.none,
           ),
         ),
         subtitle: Text(
-          description,
+          description.isEmpty ? 'No Description added yet!' : description,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              icon: Icon(Icons.edit, color: Theme.of(context).colorScheme.primary),
+              icon: Icon(
+                Icons.edit,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               onPressed: onEdit,
             ),
             IconButton(

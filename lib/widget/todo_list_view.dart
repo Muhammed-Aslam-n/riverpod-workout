@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_riverpod/config/db/todo_adapter.dart';
 import 'package:todo_app_riverpod/widget/todo_item.dart';
 
 class TodoListView extends StatelessWidget {
-  final List<Map<String, dynamic>> todos;
+  final List<TodoData> todos;
   final Function(int index) onEdit;
   final Function(int index) onDelete;
   final Function(int index, bool?) onToggle;
@@ -18,16 +19,16 @@ class TodoListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (todos.isEmpty) {
-      return Center(child: Text("No tasks found"));
+      return Center(child: Text('No tasks found'));
     }
     return ListView.builder(
       itemCount: todos.length,
       itemBuilder: (context, index) {
         final todo = todos[index];
         return TodoListItem(
-          title: todo['title'],
-          description: todo['description'],
-          isCompleted: todo['isCompleted'],
+          title: todo.title,
+          description: todo.description ?? '',
+          isCompleted: todo.isCompleted,
           onEdit: () => onEdit(index),
           onDelete: () => onDelete(index),
           onChanged: (value) => onToggle(index, value),

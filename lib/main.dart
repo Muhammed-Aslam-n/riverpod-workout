@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todo_app_riverpod/config/db/todo_adapter.dart';
+import 'package:todo_app_riverpod/constants/app_constants.dart';
 import 'package:todo_app_riverpod/screen/home.dart';
 import 'package:todo_app_riverpod/theme/theme.dart';
 
-void initHive() async {}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(TodoDataAdapter());
 
-void main() {
+  await Hive.openBox<TodoData>(DbConstants.todoTable);
+
   runApp(ProviderScope(child: const MyApp()));
 }
 
