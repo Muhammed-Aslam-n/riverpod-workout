@@ -3,18 +3,16 @@ import 'package:todo_app_riverpod/config/db/todo_adapter.dart';
 import 'package:todo_app_riverpod/constants/app_constants.dart';
 import 'package:todo_app_riverpod/logger/logger.dart';
 
-int lastSavedId = 0;
-
 abstract class DatabaseContract {
   Future<bool> saveTodo({required TodoData todo});
 
-  Future<TodoData?> updateTodo({required TodoData todo});
+  Future<bool> updateTodo({required TodoData todo});
 
   Future<List<TodoData>> getAllTodos();
 
   Future<TodoData?> getSingleTodo({required int id});
 
-  Future<bool> deleteTodo({required int id});
+  Future<bool> deleteTodo({required String id});
 }
 
 class DatabaseHelper implements DatabaseContract {
@@ -25,8 +23,7 @@ class DatabaseHelper implements DatabaseContract {
     try {
       dp('saveTodoCalled ${todo.toString()}');
       final res = await _todoBox.add(todo);
-      lastSavedId++;
-      dp('resOfSaveTodo $res - $lastSavedId');
+      dp('resOfSaveTodo $res');
       return true;
     } on Exception catch (e, s) {
       dp('ExceptionCaughtWhileTodo \n$e \n $s');
@@ -35,18 +32,18 @@ class DatabaseHelper implements DatabaseContract {
   }
 
   @override
-  Future<TodoData?> updateTodo({required TodoData todo}) async {
+  Future<bool> updateTodo({required TodoData todo}) async {
     try {
       final itemIndex = _todoBox.values.toList().indexWhere(
         (item) => todo.id == item.id,
       );
-      if (itemIndex == -1) return null;
+      if (itemIndex == -1) return false;
       await _todoBox.putAt(itemIndex, todo);
-      return todo;
+      return true;
     } on Exception catch (e, s) {
       dp('ExceptionCaughtWhileTodo \n$e \n $s');
     }
-    return null;
+    return false;
   }
 
   @override
@@ -68,7 +65,7 @@ class DatabaseHelper implements DatabaseContract {
   }
 
   @override
-  Future<bool> deleteTodo({required int id}) async {
+  Future<bool> deleteTodo({required String id}) async {
     try {
       final index = _todoBox.values.toList().indexWhere((t) => t.id == id);
       if (index == -1) return false;

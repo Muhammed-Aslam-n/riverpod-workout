@@ -27,22 +27,19 @@ class AddEditTodoForm extends StatelessWidget {
         children: [
           TextField(
             controller: titleController,
-            decoration: AppTheme.inputDecoration("Task Title"),
+            decoration: AppTheme.inputDecoration('Task Title'),
           ),
           const SizedBox(height: 16),
           TextField(
             controller: descriptionController,
-            decoration: AppTheme.inputDecoration("Task Description"),
+            decoration: AppTheme.inputDecoration('Task Description'),
             maxLines: 3,
           ),
           const SizedBox(height: 16),
           Row(
             children: [
-              const Text("Mark as Completed"),
-              Switch(
-                value: isCompleted,
-                onChanged: onCompletedChanged,
-              ),
+              const Text('Mark as Completed'),
+              Switch(value: isCompleted, onChanged: onCompletedChanged),
             ],
           ),
           const Spacer(),
@@ -57,14 +54,14 @@ class AddEditTodoForm extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text("Cancel", style: AppTheme.cancelButtonText),
+                  child: Text('Cancel', style: AppTheme.cancelButtonText),
                 ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: ElevatedButton(
                   onPressed: onSave,
-                  child: Text("Save", style: AppTheme.buttonText),
+                  child: Text('Save', style: AppTheme.buttonText),
                 ),
               ),
             ],

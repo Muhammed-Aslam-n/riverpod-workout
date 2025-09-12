@@ -4,7 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_app_riverpod/config/db/todo_adapter.dart';
 import 'package:todo_app_riverpod/constants/app_constants.dart';
 import 'package:todo_app_riverpod/router/route_manager.dart';
-import 'package:todo_app_riverpod/screen/home.dart';
 import 'package:todo_app_riverpod/theme/theme.dart';
 
 void main() async {

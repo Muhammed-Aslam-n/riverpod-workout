@@ -13,7 +13,7 @@ class TodoData {
   });
 
   @HiveField(0)
-  int id;
+  String id;
 
   @HiveField(1)
   String title;
@@ -34,7 +34,7 @@ class TodoData {
 
   // copyWith method
   TodoData copyWith({
-    int? id,
+    String? id,
     String? title,
     String? description,
     bool? isCompleted,
