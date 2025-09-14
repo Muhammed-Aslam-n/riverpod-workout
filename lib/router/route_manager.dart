@@ -11,10 +11,15 @@ class RouteManager {
     routes: [
       GoRoute(path: '/', builder: (context, state) => SplashScreen()),
       GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
-      GoRoute(path: '/addEdit', builder: (context, state) {
-        dp('state.extra ${state.extra.runtimeType} ${state.extra}');
-        return AddEditTodoScreen(todo: state.extra as TodoData,);
-      }),
+      GoRoute(
+        path: '/addEdit',
+        builder: (context, state) {
+          dp('state.extra ${state.extra.runtimeType} ${state.extra}');
+          return AddEditTodoScreen(
+            todo: state.extra != null ? state.extra as TodoData : null,
+          );
+        },
+      ),
     ],
   );
 }

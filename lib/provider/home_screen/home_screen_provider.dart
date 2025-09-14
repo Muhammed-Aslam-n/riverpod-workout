@@ -44,4 +44,8 @@ class TodoNotifier extends AsyncNotifier<List<TodoData>> {
     final todos = await db.getAllTodos();
     state = AsyncValue.data(todos);
   }
+
+  Future<bool> clearAllData() async {
+    return await ref.read(dbHelperProvider).clearData();
+  }
 }

@@ -13,6 +13,8 @@ abstract class DatabaseContract {
   Future<TodoData?> getSingleTodo({required int id});
 
   Future<bool> deleteTodo({required String id});
+
+  Future<bool> clearData();
 }
 
 class DatabaseHelper implements DatabaseContract {
@@ -76,5 +78,11 @@ class DatabaseHelper implements DatabaseContract {
       print('Error deleting todo: $e');
       return false;
     }
+  }
+
+  @override
+  Future<bool> clearData() async {
+    await _todoBox.clear();
+    return true;
   }
 }

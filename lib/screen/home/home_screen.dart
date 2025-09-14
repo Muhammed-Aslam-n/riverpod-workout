@@ -89,6 +89,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void _toggleTodo(int index, bool? value) {}
 
   void showConfirmClearAllData() {
-    showCustomDialog(context: context, child: Text('Are you sure?'));
+    // showCustomDialog(context: context, child: Text('Are you sure?'));
+    final todoAsync = ref.read(todoProvider.notifier);
+    todoAsync.clearAllData();
+    AppToaster.success(context, message: 'Todos cleared successfully');
   }
 }
