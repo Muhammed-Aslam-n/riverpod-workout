@@ -40,6 +40,7 @@ dependencies:
   hive_generator: ^1.1.0
   go_router:
   uuid:
+  web_socket_client :
 
 dev_dependencies:
   flutter_test:
